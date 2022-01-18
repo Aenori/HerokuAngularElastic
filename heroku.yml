@@ -1,0 +1,7 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    PRODUCTION: 1
+run:
+  web: env DATABASE_URL=$JDBC_DATABASE_URL java -jar target/heroku-xmen-1.0.jar
