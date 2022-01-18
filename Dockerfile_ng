@@ -2,15 +2,11 @@ FROM node:16-alpine AS angular_docker
 
 RUN npm install -g @angular/cli
 
-ADD angular_heroku_project /app
+ADD AngularElasticSearch /app
 WORKDIR /app
 RUN npm install
 
-ARG PRODUCTION
-ENV PRODUCTION=$PRODUCTION
-ADD scripts/docker/ng_build.sh ng_build.sh
-RUN ls
-RUN sh ng_build.sh
+RUN ng build
 
 CMD ng serve --host 0.0.0.0
 
